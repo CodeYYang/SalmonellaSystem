@@ -13,17 +13,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysUserService extends IService<SysUser> {
 
-    /**
-     * 查找邀请码
-     * @param userId
-     * @return
-     */
-    String searchInviteById(Long userId);
+
 
     /**
-     * 查找用户
-     * @param userId
+     * 根据名字查找用户
+     * @param name
      * @return
      */
-    SysUser searchUserById(Long userId);
+    SysUser searchUserByName(String name);
+
 }

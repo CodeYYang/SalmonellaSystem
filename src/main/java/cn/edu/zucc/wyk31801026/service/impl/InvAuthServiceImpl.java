@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -42,15 +43,22 @@ public class InvAuthServiceImpl extends ServiceImpl<InvAuthMapper, InvAuth> impl
 
     /**
      * 保存邀请码
-     * @param invId
+     * @param invAuth
      * @param
      */
     @Override
-    public void saveInvAuth(String invId,String provinces) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        InvAuth invAuth = new InvAuth();
-        invAuth.setInvitationCode(invId);
-        invAuth.setProvince(provinces);
+    public void saveInvAuth(InvAuth invAuth) {
         invAuthMapper.insert(invAuth);
+    }
+
+    /**
+     * 寻找所有邀请码
+     * @return
+     */
+    @Override
+    public List<InvAuth> searchAllAuth(String state) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("state",state);
+        return invAuthMapper.selectList(queryWrapper);
     }
 }

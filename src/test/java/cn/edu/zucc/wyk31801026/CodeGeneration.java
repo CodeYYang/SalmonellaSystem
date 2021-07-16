@@ -52,11 +52,12 @@ public class CodeGeneration {
 
         //策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
-        strategyConfig.setInclude("inv_auth");
+        strategyConfig.setInclude("gene_sequencing");
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
         //忽略表中前缀
         //strategyConfig.setTablePrefix("tb_");
+        strategyConfig.setEntityTableFieldAnnotationEnable(true);
         strategyConfig.setEntityLombokModel(true);
         strategyConfig.setRestControllerStyle(true);
         autoGenerator.setStrategy(strategyConfig);

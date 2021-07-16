@@ -23,17 +23,19 @@ public enum ResultCode implements IResultCode{
 
     /* 用户错误 */
     USER_NOT_LOGIN(2001, "用户未登录"),
-    USER_ACCOUNT_EXPIRED(2002, "账号已过期"),
+    NO_SYS_USER_ACCOUNT(2002,"非管理员账户"),
     USER_CREDENTIALS_ERROR(2003, "密码错误"),
-    USER_CREDENTIALS_EXPIRED(2004, "密码过期"),
-    USER_ACCOUNT_DISABLE(2005, "账号不可用"),
-    USER_ACCOUNT_LOCKED(2006, "账号被锁定"),
+    DIFFERENT_PASSWORD(2004,"密码不一致"),
+    USER_ACCOUNT_EXIST(2005, "用户已存在"),
     USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
-    USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
     USER_ACCOUNT_USE_BY_OTHERS(2009, "账号下线"),
 
     /* 业务错误 */
-    NO_PERMISSION(3001, "没有权限");
+    NO_PERMISSION(3001, "没有权限"),
+    NO_INVITATION_CODE(3002,"没有可用的邀请码"),
+    INVITATION_CODE_EXIST(3003,"邀请码已被使用"),
+    ERROR_INVITATION_CODE(3004,"邀请码无效"),
+    NO_RIGHT_DATA(3005,"不存在符合要求的数据");
 
     private Integer code;
 

@@ -24,38 +24,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Resource
     private SysUserMapper sysUserMapper;
 
-    /**
-     * 查找邀请码
-     * @param userId
-     * @return
-     */
-    @Override
-    public String searchInviteById(Long userId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("user_id",userId);
-        SysUser sysUser = sysUserMapper.selectById(userId);
-        String code = "";
-        if(!("".equals(sysUser.getInvitationCode())||sysUser.getInvitationCode()==null)){
-            code = sysUser.getInvitationCode();
-        }
-        return code;
-    }
 
     /**
-     * 查找用户
-     * @param userId
+     * 根据名字查找用户
+     * @param name
      * @return
      */
     @Override
-    public SysUser searchUserById(Long userId) {
+    public SysUser searchUserByName(String name) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("user_id",userId);
-        SysUser sysUser = sysUserMapper.selectById(userId);
-        if(sysUser == null)
-        {
-            return sysUser;
-        }else {
-            return null;
-        }
+        queryWrapper.eq("user_name",name);
+        SysUser sysUser = sysUserMapper.selectOne(queryWrapper);
+        return sysUser;
     }
+
+
 }

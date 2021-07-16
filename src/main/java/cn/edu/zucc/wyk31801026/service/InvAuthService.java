@@ -3,6 +3,8 @@ package cn.edu.zucc.wyk31801026.service;
 import cn.edu.zucc.wyk31801026.entity.InvAuth;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -24,9 +26,15 @@ public interface InvAuthService extends IService<InvAuth> {
 
     /**
      * 保存邀请码
-     * @param invId
-     * @param provinces
+     * @param invAuth
      */
-    void saveInvAuth(String invId,String provinces);
+    void saveInvAuth(InvAuth invAuth);
+
+    /**
+     * 查找所有邀请码
+     * @return
+     * @param state
+     */
+    List<InvAuth> searchAllAuth(String state);
 
 }
