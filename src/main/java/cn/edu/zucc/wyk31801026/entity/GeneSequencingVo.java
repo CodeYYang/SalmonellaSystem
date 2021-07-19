@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @TableName("gene_sequencing")
 @ApiModel(value="GeneSequencing对象", description="")
-public class GeneSequencing implements Serializable {
+public class GeneSequencingVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,27 +56,6 @@ public class GeneSequencing implements Serializable {
 
     @TableField("Continent")
     private String continent;
-
-    @TableField("Sampling_type")
-    private String samplingType;
-
-    @TableField("Sampling_time")
-    private Date samplingTime;
-
-    @TableField("Sample_place")
-    private String samplePlace;
-
-    @TableField("Disease")
-    private String disease;
-
-    @TableField("Gender")
-    private String gender;
-
-    @TableField("Age")
-    private Integer age;
-
-    @TableField("City")
-    private String city;
 
     @TableField("whether_MIC")
     private String whetherMic;

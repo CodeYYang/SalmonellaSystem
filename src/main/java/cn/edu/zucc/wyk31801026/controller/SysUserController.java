@@ -42,7 +42,8 @@ public class SysUserController {
      */
     @GetMapping("/productInvite")
     @ApiOperation(value = "创建邀请码",notes = "创建邀请码")
-    public Result productInvite(@RequestParam("provinces") String province)
+    public Result productInvite(@RequestParam("provinces") String province,
+                                @RequestParam("value") String permission)
     {
         String auth = "";
         province = province.substring(1,province.length());
@@ -52,7 +53,11 @@ public class SysUserController {
             Integer integer = Integer.valueOf(s);
             integer = integer + 1;
             String city = Province.getNameById(integer);
-            auth = auth+" "+ city;
+            if("".equals(auth)){
+                auth = city;
+            }else {
+                auth = auth + "," + city;
+            }
         }
         String code = invitationCode.genSixToSixteenPsw();
         while (invAuthService.searchInvAuthById(code) != null){
@@ -64,6 +69,11 @@ public class SysUserController {
         invAuth.setProvince(auth);
         invAuth.setNumber(provinces.length);
         invAuth.setState("未使用");
+        if("yes".equals(permission)){
+            invAuth.setPermission(Integer.valueOf(1));
+        }else{
+            invAuth.setPermission(Integer.valueOf(0));
+        }
         invAuthService.saveInvAuth(invAuth);
         return Result.ok().data("inviteCode",code);
     }

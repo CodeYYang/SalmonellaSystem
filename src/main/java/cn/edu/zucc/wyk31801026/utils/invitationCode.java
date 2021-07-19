@@ -3,7 +3,7 @@ package cn.edu.zucc.wyk31801026.utils;
 import java.util.Random;
 public class invitationCode {
     /**
-     * 随机6位邀请码
+     * 随机7位邀请码
      * @return
      */
     public static String genSixToSixteenPsw() {

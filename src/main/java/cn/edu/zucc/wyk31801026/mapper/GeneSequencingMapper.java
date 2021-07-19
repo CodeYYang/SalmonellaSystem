@@ -36,4 +36,8 @@ public interface GeneSequencingMapper extends BaseMapper<GeneSequencing> {
      */
     ArrayList<String> getAllProvince();
 
+
+
+
+
 }

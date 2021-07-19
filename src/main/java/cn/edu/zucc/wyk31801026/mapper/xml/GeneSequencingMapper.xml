@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.zucc.wyk31801026.mapper.GeneSequencingMapper">
 
-    <select id="searchPublicInformation" resultType="cn.edu.zucc.wyk31801026.entity.vo.GeneSequencingVo">
+    <select id="searchPublicInformation" resultType="cn.edu.zucc.wyk31801026.entity.GeneSequencingVo">
         select id,Name,Bacteria,Serotype,ST,host,Year,Country,Province,Continent,
         whether_MIC,ENR,OFL,AMP,GEN,KAN,TET,AZI,NAL,CIP,CHL,SXT,STR,AMC,SIZ,CF,
         CEF,CX,COL,MPN,AorC,SPT,FFC,SF,CAZ,MEM,APR,CL,MEQ,TRI,SUL,AMO,CLA,IPM,AMK,
@@ -15,18 +15,21 @@
         select distinct year
         from gene_sequencing
         group by year
+        ORDER BY year
     </select>
 
     <select id="getAllSerotype" resultType="string">
         select distinct Serotype
         from gene_sequencing
         group by Serotype
+        ORDER BY Serotype
     </select>
 
     <select id="getAllProvince" resultType="string">
         select distinct province
         from gene_sequencing
         group by province
+        ORDER BY province
     </select>
 
 </mapper>

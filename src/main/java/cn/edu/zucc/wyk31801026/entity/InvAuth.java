@@ -38,5 +38,7 @@ public class InvAuth implements Serializable {
     @TableField("state")
     private String state;
 
+    @TableField("permission")
+    private Integer permission;
 
 }
